@@ -5,15 +5,16 @@ Run this first. Once it works, we wrap it in a web API (Step 2).
 """
 
 import json
+import os
 from groq import Groq
 
 # Get your free API key from https://console.groq.com (no card/billing required)
 # Paste your key directly below.
 # This is fine for a local test script that never gets pushed to GitHub.
 # Once we move to the real app, we'll handle this properly (e.g. via a .env file that's gitignored).
-API_KEY = "groq_api_key"
+API_KEY = os.environ.get("GROQ_API_KEY", "groq_api_key")  # Replace with your actual Groq key
 
-if API_KEY != "groq_api_key":
+if API_KEY == "groq_api_key":
     raise ValueError("Open this file and replace API_KEY with your actual Groq key on line 8.")
 
 client = Groq(api_key=API_KEY)
