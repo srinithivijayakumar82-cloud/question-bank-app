@@ -5,7 +5,7 @@ function questionInput(){
   const [numberOfQuestions, setNumberOfQuestions]=useState('');
   const [questions, setQuestions]=useState([]);
   async function backendCall(){
-  const response=await fetch('http://127.0.0.1:8000/generate_questions_endpoint', {
+  const response=await fetch('https://question-bank-app-sw3q.onrender.com/generate_questions_endpoint', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
