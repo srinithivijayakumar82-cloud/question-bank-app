@@ -8,11 +8,7 @@ import json
 import os
 from groq import Groq
 
-# Get your free API key from https://console.groq.com (no card/billing required)
-# Paste your key directly below.
-# This is fine for a local test script that never gets pushed to GitHub.
-# Once we move to the real app, we'll handle this properly (e.g. via a .env file that's gitignored).
-API_KEY = os.environ.get("GROQ_API_KEY", "groq_api_key")  # Replace with your actual Groq key
+API_KEY = os.environ.get("GROQ_API_KEY", "groq_api_key") 
 
 if API_KEY == "groq_api_key":
     raise ValueError("Open this file and replace API_KEY with your actual Groq key on line 8.")
@@ -45,7 +41,6 @@ Return ONLY a valid JSON array, no markdown formatting, no extra text. Each item
     )
     raw_text = response.choices[0].message.content.strip()
 
-    # Models sometimes wrap JSON in ```json ... ``` — strip that if present
     if raw_text.startswith("```"):
         raw_text = raw_text.split("```")[1]
         if raw_text.startswith("json"):
@@ -62,7 +57,7 @@ Return ONLY a valid JSON array, no markdown formatting, no extra text. Each item
 
 
 if __name__ == "__main__":
-    # Quick manual test - replace this with real content from a learning unit
+
     sample_content = """
     Photosynthesis is the process by which green plants, algae, and some bacteria
     convert light energy into chemical energy. It occurs mainly in the chloroplasts
